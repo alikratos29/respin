@@ -3,9 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="refresh" content="0; url=http://imoviee.com/">
-    <title>در حال انتقال ...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Page</title>
+    <script>
+        // آدرس صفحه اول
+        const allowedReferer = "https://tnxi.github.io/rapins/name.html";
+
+        // بررسی ارجاع‌دهنده
+        window.onload = function() {
+            const referer = document.referrer;
+            if (referer !== allowedReferer) {
+                // اگر ارجاع‌دهنده معتبر نیست، کاربر را به صفحه دیگری هدایت کن
+                window.location.href = "https://example.com/forbidden"; // اینجا می‌توانید صفحه دلخواه را قرار دهید
+            } else {
+                // دسترسی به محتوا آزاد است
+                document.body.style.display = "block";
+            }
+        };
+    </script>
+    <style>
+        /* مخفی کردن محتوای صفحه تا زمانی که ارجاع‌دهنده بررسی شود */
+        body {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <p>در حال ورود به بلبل جان 2 <a href="http://imoviee.com/">آدرس</a>.</p>
+    <h1>Welcome to the protected page</h1>
+    <p>Only users coming from the first page can see this.</p>
 </body>
 </html>
